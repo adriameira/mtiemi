@@ -36,7 +36,8 @@ h3{font:800 clamp(22px,2.2vw,30px)/1.05 "Inter Tight",sans-serif;letter-spacing:
 .cap{font-size:13px;opacity:.8}
 
 /* nav */
-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px max(5vw,18px);background:rgba(111,18,16,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(251,241,226,.12)}
+nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px max(5vw,18px);background:transparent;border-bottom:1px solid transparent;transition:background-color .3s,border-color .3s,box-shadow .3s}
+nav.solid{background:var(--red2);border-bottom-color:rgba(251,241,226,.12);box-shadow:0 6px 20px rgba(40,4,4,.25)}
 .logo{font:900 22px/1 "Inter Tight",sans-serif;letter-spacing:-.05em;text-decoration:none;text-transform:uppercase}
 .links{display:flex;gap:clamp(12px,2.4vw,32px);flex-wrap:wrap;justify-content:flex-end}
 .links a{font:500 14px/1 Inter,sans-serif;text-decoration:none;padding:10px 0;opacity:.85}
@@ -323,6 +324,9 @@ cb.onclick=async()=>{try{await navigator.clipboard.writeText('mtiemiii@gmail.com
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 }
+</script>
+<script>
+(()=>{const n=document.querySelector('nav');const f=()=>n.classList.toggle('solid',scrollY>10);addEventListener('scroll',f,{passive:true});f()})();
 </script>
 </body>
 </html>
