@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Melina Tiemi</title>
+<meta name="description" content="Melina Tiemi — Integrated Marketing, Communications & Account Management across fashion, advertising and tech.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,600;0,800;0,900;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: confiante, editorial, de quem circula entre semanas de moda e agências; pouco texto, muita presença.
+   IDEA: o media kit impresso / lookbook de temporada: páginas vermelhas com papel texturizado, títulos gigantes em creme.
+   PICTURE: retratos P&B em tira de contato sob o nome gigante; fotos de Paris como provas de contato.
+   COLOUR and TYPE: vermelho-sangue texturizado #8f1a18 dominante, creme #fbf1e2 de apoio, coral #ec4a3c como acento de etiqueta; Inter Tight 900 com tracking negativo + Inter.
+   LAYOUT: bandas vermelhas de ponta a ponta, uma faixa creme para projetos (respiro), grade assimétrica, galeria com scroll-snap.
+*/
+:root{color-scheme:light dark;--red:#8f1a18;--red2:#6f1210;--cream:#fbf1e2;--paper:#f6ead8;--coral:#ec4a3c;--ink:#1d0807;--bg:var(--red)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--red) url(img/texture.jpg) center/cover fixed;color:var(--cream);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto}
+.band{padding:clamp(56px,8vw,120px) max(5vw,18px)}
+.big{font:900 clamp(56px,13.5vw,210px)/.84 "Inter Tight",sans-serif;letter-spacing:-.055em;margin:0;text-transform:uppercase}
+h2{font:900 clamp(44px,7.4vw,112px)/.88 "Inter Tight",sans-serif;letter-spacing:-.05em;margin:0 0 .35em;text-transform:uppercase;text-wrap:balance}
+.h2s{font-size:clamp(40px,5.4vw,84px)}
+h2 .lt{font-weight:300;letter-spacing:-.06em}
+h3{font:800 clamp(22px,2.2vw,30px)/1.05 "Inter Tight",sans-serif;letter-spacing:-.03em;margin:0;text-transform:uppercase}
+.tag{display:inline-block;background:var(--coral);color:var(--cream);font:600 13px/1 Inter,sans-serif;padding:8px 12px;border-radius:6px;text-transform:uppercase;letter-spacing:.02em}
+.lead{font:600 clamp(19px,1.8vw,24px)/1.35 "Inter Tight",sans-serif;letter-spacing:-.01em;max-width:34ch;text-wrap:balance}
+.muted{opacity:.82}
+.cap{font-size:13px;opacity:.8}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px max(5vw,18px);background:rgba(111,18,16,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(251,241,226,.12)}
+.logo{font:900 22px/1 "Inter Tight",sans-serif;letter-spacing:-.05em;text-decoration:none;text-transform:uppercase}
+.links{display:flex;gap:clamp(12px,2.4vw,32px);flex-wrap:wrap;justify-content:flex-end}
+.links a{font:500 14px/1 Inter,sans-serif;text-decoration:none;padding:10px 0;opacity:.85}
+.links a:hover,.links a:focus-visible{opacity:1;text-decoration:underline;text-underline-offset:5px}
+.cta{background:var(--cream);color:var(--red)!important;padding:10px 16px!important;border-radius:999px;opacity:1!important;font-weight:600!important}
+:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+
+/* hero */
+.hero{padding-top:clamp(28px,4vw,56px);padding-bottom:clamp(40px,5vw,72px)}
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.4vw,20px)}
+.strip figure{margin:0;border-radius:clamp(10px,1.4vw,20px);overflow:hidden;aspect-ratio:4/4.2;background:#333}
+.strip img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.strip figure:hover img{transform:scale(1.04)}
+.hero .big{margin-top:-.38em;position:relative;mix-blend-mode:normal;text-shadow:0 2px 30px rgba(60,5,5,.35)}
+@media(min-width:901px){.hname{font-size:clamp(56px,13.2vw,194px);white-space:nowrap}.brm{display:none}}
+.herofoot{display:grid;grid-template-columns:minmax(0,1fr);gap:32px;align-items:end;margin-top:clamp(20px,3vw,40px)}
+.role{font:800 clamp(18px,2vw,26px)/1.1 "Inter Tight",sans-serif;letter-spacing:-.02em;text-transform:uppercase;margin:0 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.chip{border:1px solid rgba(251,241,226,.5);border-radius:999px;padding:7px 14px;font-size:14px;white-space:nowrap}
+
+/* sobre */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,80px);align-items:start}
+.photo{position:relative;border-radius:20px;overflow:hidden}
+.photo img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.photo .tag{position:absolute;right:14px;bottom:40px;font-size:9.5px;padding:5px 8px;border-radius:4px;letter-spacing:.01em}
+.photo .credit{position:absolute;right:14px;bottom:14px;background:var(--coral);font-size:10.5px;line-height:1;padding:5px 8px;border-radius:4px}
+.about p{max-width:62ch}
+.comp{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;border-top:1px solid rgba(251,241,226,.25)}
+.comp li{padding:12px 0;border-bottom:1px solid rgba(251,241,226,.25);font-weight:500;font-size:15px}
+
+/* marquee */
+.marquee{background:var(--cream);color:var(--red);overflow:hidden;padding:18px 0;border-block:1px solid var(--red2)}
+.track{display:flex;width:max-content;animation:mq 38s linear infinite}
+.track span{font:900 clamp(26px,3.6vw,48px)/1 "Inter Tight",sans-serif;letter-spacing:-.04em;text-transform:uppercase;padding-right:.6em;white-space:nowrap}
+.track span i{font-style:normal;color:var(--coral);padding-left:.6em}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* projetos */
+.projects{background:var(--paper);color:var(--ink)}
+.projects h2{color:var(--red)}
+.phead{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(24px,4vw,48px)}
+.plist{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.card{background:#fff;border-radius:18px;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 0 rgba(0,0,0,.04),0 18px 40px -28px rgba(80,10,10,.35);transition:transform .3s}
+.card{grid-column:span 2}
+.card:hover{transform:translateY(-3px)}
+.card .top{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.card h3{color:var(--red)}
+.card .yr{flex:none;font:600 14px/1 Inter,sans-serif;white-space:nowrap;background:var(--paper);padding:7px 10px;border-radius:999px}
+.card .pos{font:600 13px/1.3 Inter,sans-serif;text-transform:uppercase;letter-spacing:.02em;color:var(--coral);margin:0}
+.card p{margin:0;font-size:15.5px;line-height:1.6;color:#3a1a18}
+.card .gap{display:block;height:.7em}
+.card b{color:var(--ink)}
+.card.feat{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:center}
+.card.feat .imgs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card.feat .imgs.one{grid-template-columns:minmax(0,1fr);max-width:420px;justify-self:end;width:100%}
+.pimg{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px}
+.card .pimg{aspect-ratio:16/10}
+.grp:first-child{margin-top:0}
+.grp{grid-column:1/-1;color:var(--red);font-size:clamp(26px,3vw,40px);margin:clamp(18px,3vw,36px) 0 0;padding-bottom:12px;border-bottom:2px solid var(--red)}
+.card.feat img{border-radius:12px;width:100%;aspect-ratio:3/4;object-fit:cover}
+.brands{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.brands span{font-size:12.5px;border:1px solid rgba(143,26,24,.3);color:var(--red);border-radius:999px;padding:5px 10px;font-weight:500}
+
+/* mel trends */
+.mt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid rgba(251,241,226,.3);margin-top:28px}
+.stat{padding:20px 0 18px;border-bottom:1px solid rgba(251,241,226,.3)}
+.stat:nth-child(odd){padding-right:16px;border-right:1px solid rgba(251,241,226,.3)}
+.stat:nth-child(even){padding-left:20px}
+.stat b{display:block;font:900 clamp(40px,5.4vw,76px)/.95 "Inter Tight",sans-serif;letter-spacing:-.05em}
+.stat span{font-size:14px;opacity:.85}
+.mtpic{position:relative}
+.mtpic img{border-radius:20px;width:100%;aspect-ratio:1/1.05;object-fit:cover;filter:grayscale(1)}
+.bubble{position:absolute;background:var(--cream);color:var(--ink);border-radius:12px;padding:12px 14px;max-width:240px;box-shadow:0 14px 30px -12px rgba(0,0,0,.45);font-size:13.5px;line-height:1.4}
+.bubble .tag{font-size:11px;padding:6px 9px;margin-bottom:8px}
+.b1{left:-18px;top:8%}.b2{right:-18px;top:38%}.b3{left:6%;bottom:-22px}
+.aud{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:18px;font-size:14px}
+.aud b{font-family:"Inter Tight";font-size:20px;letter-spacing:-.03em}
+
+/* gallery */
+.gal-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.btns{display:flex;gap:10px}
+.btns button{width:48px;height:48px;border-radius:50%;border:1px solid var(--cream);background:transparent;color:var(--cream);font-size:20px;cursor:pointer}
+.btns button:hover{background:var(--cream);color:var(--red)}
+.gal{display:flex;gap:clamp(10px,1.4vw,18px);overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 0 18px;margin-top:24px;scrollbar-width:thin;scrollbar-color:var(--cream) transparent}
+.gal figure{flex:0 0 clamp(210px,22vw,300px);margin:0;scroll-snap-align:start}
+.gal img{width:100%;aspect-ratio:9/15;object-fit:cover;border-radius:14px}
+.gal figcaption{font-size:13.5px;margin-top:10px;line-height:1.35}
+
+/* telecurso & tiktok */
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
+.panel{background:rgba(60,6,6,.28);border:1px solid rgba(251,241,226,.16);border-radius:22px;padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;gap:18px}
+.panel h2{font-size:clamp(40px,5vw,76px);margin:0}
+.panel img{border-radius:14px;width:100%;aspect-ratio:16/10;object-fit:cover}
+.panel p{margin:0;max-width:60ch}
+.pill{align-self:flex-start;background:var(--cream);color:var(--red);font-weight:600;text-decoration:none;padding:12px 18px;border-radius:999px;font-size:15px}
+.pill:hover{background:#fff}
+blockquote{margin:0;font:400 italic 17px/1.55 "Inter Tight",sans-serif;border-left:3px solid var(--coral);padding-left:16px}
+
+/* contato */
+.contact{text-align:center;padding-block:clamp(80px,12vw,180px)}
+.contact .big{font-size:clamp(52px,12vw,190px)}
+.contact p{max-width:52ch;margin:24px auto 32px}
+.mails{display:flex;flex-direction:column;align-items:center;gap:12px}
+.mail{display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;background:var(--cream);color:var(--red);padding:14px 22px;border-radius:999px;text-decoration:none;font:700 clamp(16px,2vw,22px)/1.1 "Inter Tight",sans-serif;letter-spacing:-.01em}
+.mail small{font:500 12px/1 Inter;opacity:.7;text-transform:uppercase}
+.copy{border:1px solid rgba(251,241,226,.5);background:transparent;color:var(--cream);border-radius:999px;padding:10px 16px;font:500 14px Inter;cursor:pointer;min-height:44px}
+.social{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.social a{font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px max(5vw,18px);border-top:1px solid rgba(251,241,226,.2);font-size:13px;opacity:.85}
+
+/* reveal */
+.rv{opacity:var(--o,0);transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.track{animation:none}html{scroll-behavior:auto}}
+
+@media(max-width:900px){
+ .plist{grid-template-columns:repeat(2,minmax(0,1fr))}.card{grid-column:auto}.card.feat{grid-column:1/-1}
+ .about,.mt,.card.feat,.duo{grid-template-columns:minmax(0,1fr)}
+ @media(min-width:901px){.hname{font-size:clamp(56px,13.2vw,194px);white-space:nowrap}.brm{display:none}}
+.herofoot{grid-template-columns:minmax(0,1fr)}.chips{justify-content:flex-start}
+ .b1{left:8px}.b2{right:8px}
+}
+@media(max-width:600px){
+ .links a:not(.cta){display:none}
+ .plist{grid-template-columns:minmax(0,1fr)}
+ .comp{grid-template-columns:minmax(0,1fr)}
+ .bubble{position:static;max-width:none;margin-top:10px}
+ .mtpic{display:flex;flex-direction:column}
+ .stat:nth-child(odd){padding-right:10px}.stat:nth-child(even){padding-left:12px}
+ body{background-attachment:scroll}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#top">Melina Tiemi</a>
+  <div class="links">
+    <a href="#sobre">About</a>
+    <a href="#projetos">Projects</a>
+    <a href="#paris">Networking</a>
+    <a class="cta" href="#contato">Contact</a>
+  </div>
+</nav>
+
+<header class="band hero" id="top">
+  <div class="wrap">
+    <div class="strip">
+      <figure><img src="img/p1.jpg" alt="Black and white portrait of Melina Tiemi holding her phone"></figure>
+      <figure><img src="img/p2.jpg" alt="Black and white portrait of Melina Tiemi smiling"></figure>
+      <figure><img src="img/p3.jpg" alt="Black and white portrait of Melina Tiemi wearing hoop earrings"></figure>
+    </div>
+    <h1 class="big hname">Melina<br class="brm"> Tiemi</h1>
+    <div class="herofoot">
+      <div>
+        <p class="role">Integrated Marketing &amp; Account Management</p>
+        <p class="lead muted" style="margin:0">Brand Comms, Marketing &amp; Cultural Strategy professional with 10+ years of experience across global and local markets</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-label="Brands Melina has worked with">
+  <div class="track" id="track"></div>
+</div>
+
+<section class="band" id="sobre">
+  <div class="wrap about">
+    <div class="photo rv">
+      <img src="img/jw1.jpg" alt="Melina Tiemi on the street during Paris Fashion Week" loading="lazy">
+      <span class="tag">Paris Fashion Week</span>
+      <span class="credit">@Benjamin Kwan</span>
+    </div>
+    <div class="rv">
+      <h2 class="h2s">Where insight<br><span class="lt">meets execution</span></h2>
+      <p class="lead">Brazilian-Japanese comms professional with family roots in Kagoshima and São Paulo</p>
+      <p>After six years in Germany working with global teams at adidas, BMW and other companies, Melina is now based in São Paulo, bringing 10+ years of international experience across fashion, advertising and tech industries.</p>
+      <p>Expert in delivering integrated marketing campaigns, media and influencer marketing strategies and go-to-market initiatives in close partnership with commercial, creative, production and editorial teams.</p>
+      <ul class="comp" aria-label="Core competencies">
+        <li>Marcomm</li>
+        <li>AI-powered workflows</li>
+        <li>Client Services</li>
+        <li>Brand partnerships</li>
+        <li>Social media &amp; cultural strategy</li>
+        <li>360 campaign development &amp; management</li>
+        <li>Stakeholder management</li>
+        <li>SoW, brief, timeline, budget &amp; OKRs</li>
+        <li>Coolhunting &amp; trend research</li>
+        <li>Influencer strategy &amp; management</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band projects" id="projetos">
+  <div class="wrap">
+    <div class="phead">
+      <h2>Selected<br><span class="lt">projects</span></h2>
+      <p class="lead" style="color:#5a2420;margin:0">From global collabs storytelling to luxury and tech account management</p>
+    </div>
+    <div class="plist" id="plist"></div>
+  </div>
+</section>
+
+<section class="band" id="paris" style="background:rgba(60,6,6,.25)">
+  <div class="wrap">
+    <div class="gal-head">
+      <h2 style="margin:0">Industry Events<br><span class="lt">&amp; Networking</span></h2>
+      <div class="btns"><button type="button" id="prev" aria-label="Previous">←</button><button type="button" id="next" aria-label="Next">→</button></div>
+    </div>
+    <div class="gal" id="gal" tabindex="0" aria-label="Industry events gallery"></div>
+  </div>
+</section>
+
+<section class="band contact" id="contato">
+  <div class="wrap">
+    <h2 class="big">Let's<br>talk</h2>
+    <p class="lead" style="margin-inline:auto;max-width:44em">Available for projects in Brazil and worldwide:<br>marketing, brand partnerships and client services</p>
+    <div class="mails">
+      <a class="mail" href="mailto:mtiemiii@gmail.com">mtiemiii@gmail.com</a>
+      <button class="copy" type="button" id="copy">Copy email</button>
+    </div>
+  </div>
+</section>
+
+<footer><span>Melina Tiemi</span></footer>
+
+<script>
+{
+const brands=['adidas','WGSN','Highsnobiety','Nike','Zalando','AKQA','Monks','Jellyfish','90 Antiope Magazine','Cartier','Moncler','Google','BMW'];
+const one=brands.map(b=>`<span>${b}<i>✳</i></span>`).join('');
+document.getElementById('track').innerHTML=one+one;
+
+const projects=[
+ {h:'Global'},
+ {n:'adidas',pos:'Brand Comms & Digital Retail Manager',y:'2021–2025',feat:true,
+  t:'As part of the adidas global team, Melina worked across two main departments:<span class="gap"></span>For <b>adidas Originals Statement</b>, Melina developed brand comms storytelling for fashion collabs such as <b>Balenciaga, Wales Bonner and Palace Skateboards</b>.<span class="gap"></span>For the <b>Sportswear Seamless Retail</b> team, Melina led digital (.com and app) and retail (DTC and WHS) customer journeys aligned with membership strategy, GTM toolkits and bi-annual showrooms at the adidas HQ.',
+  b:['Balenciaga','Wales Bonner','Palace','Membership','GTM strategy','UX/UI workflows','Brand collab']},
+ {n:'Highsnobiety',img:['highsnobiety-cartier','Clash de Cartier × Highsnobiety event in Berlin','center 62%'],pos:'Senior Account & Project Manager',y:'2021',
+  t:'Client Services for <b>Cartier</b> and <b>Moncler</b>, leading client comms with HQ and cross-functional teams coordination focused on editorial, influencer, e-comm, SoME and paid media deliverables.',
+  b:['Cartier','Moncler','Luxury']},
+ {n:'CHAI & 90antiope',img:['matter-and-shape-table','MATTER and SHAPE design salon in Paris','center center'],pos:'Brand Partnerships Lead',y:'2021 & 2025',
+  t:'For <b>CHAI</b>, a Japanese band represented by Sony Japan, Melina developed brand collaborations with <b>Anna Sui</b> and <b>Stine Goya</b> to amplify visibility.<span class="gap"></span>For <b>90antiope</b>, a French art and fashion magazine, she secured a commercial partnership with <b>MATTER and SHAPE 2025</b>, a Paris-based design salon during Fashion Week.',
+  b:['Sony Japan','Anna Sui','Stine Goya','Paris']},
+ {n:'AKQA · Monks · Jellyfish',img:['bmw-u10','BMW U10 Organic Social Toolbox','left center'],pos:'Senior Account & Project Manager',y:'2021–2026',
+  t:'Client Services for <b>AKQA</b> (Nike Jordan and Google), <b>Monks</b> (BMW) and <b>Jellyfish</b> (Oura Ring), leading client comms with HQ and cross-functional teams coordination focused on editorial, influencer, e-comm, SoME and paid media deliverables.',
+  b:['Nike Jordan','Google','BMW','Oura Ring']},
+ {h:'Brazil'},
+ {n:'TIDAL',img:['tidal-hits','TIDAL × HITS event poster','center 88%'],pos:'Marketing Manager',y:'2019–2020',
+  t:'Developed marketing strategies, events and brand activations aligned with global KPIs and managed artists and record labels relationships.<span class="gap"></span>Business trips to <b>TIDAL\'s New York HQ</b> and on-site participation at the <b>Made in America Festival</b> in Philadelphia',
+  b:['Music','Events','Brand activations','Artists & labels']},
+ {n:'WGSN',img:['wgsn-arte-na-moda','Arte na Moda: Coleção MASP Rhodia exhibition feature, São Paulo 2016','left center'],pos:'Fashion & Culture Contributor',y:'2014–2016',
+  t:'Fashion & Culture Contributor for <b>WGSN</b> and <b>WGSN Insider blog</b>, including editorial coverage on Berlin Fashion Week, São Paulo city guides, art exhibitions and industry events.',
+  b:['Trends','Berlin Fashion Week']},
+ {n:'Ruby Pseudo',img:['nike-freedom','Freedom — Nike Sportswear field research in Brazil','center center'],pos:'Lead Researcher',y:'2014',
+  t:'Lead researcher for a <b>Nike Sportswear</b> field research in Brazil, commissioned by Nike London. Besides producing and conducting interviews, Melina resourced and coordinated a local team made of research assistant, videographer and photographer.',
+  b:['Nike','Field research']}
+];
+document.getElementById('plist').innerHTML=projects.map(p=>{
+ if(p.h)return `<h3 class="grp">${p.h}</h3>`;
+ const body=`<div class="top"><h3>${p.n}</h3>${p.y?`<span class="yr">${p.y}</span>`:''}</div><p class="pos">${p.pos}</p><p>${p.t}</p><div class="brands">${p.b.map(x=>`<span>${x}</span>`).join('')}</div>`;
+ return p.feat?`<article class="card feat rv"><div style="display:flex;flex-direction:column;gap:14px">${body}</div><div class="imgs one"><img src="img/adidas-balenciaga.jpg" alt="Balenciaga × adidas campaign" loading="lazy"></div></article>`
+ :`<article class="card rv${p.img?' wi':''}">${p.img?`<img class="pimg" src="img/${p.img[0]}.jpg" alt="${p.img[1]}" style="object-position:${p.img[2]}" loading="lazy">`:''}${body}</article>`;
+}).join('');
+
+
+const gal=[['pfw','Paris Fashion Week'],['pr1','Coco Capitán vernissage at Librairie 7L'],['pr7','Dior re-see Couture FW26/27'],['chanel-hamburger-bahnhof','CHANEL Commission Press Day at Hamburger Bahnhof'],['pr2','Press Day Glossier × Sephora'],['pr3','Press Day Byredo'],['pr4','Press Day Diptyque'],['pr5','Miu Miu Summer Reads']];
+const g=document.getElementById('gal');
+g.innerHTML=gal.map(x=>`<figure><img src="img/${x[0]}.jpg" alt="${x[1]}" loading="lazy"><figcaption>${x[1]}</figcaption></figure>`).join('');
+const step=d=>{const f=g.querySelector('figure');const w=f?f.getBoundingClientRect().width+16:300;g.scrollBy({left:d*w,behavior:'smooth'})};
+document.getElementById('prev').onclick=()=>step(-1);
+document.getElementById('next').onclick=()=>step(1);
+g.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();step(1)}if(e.key==='ArrowLeft'){e.preventDefault();step(-1)}});
+
+const cb=document.getElementById('copy');
+cb.onclick=async()=>{try{await navigator.clipboard.writeText('mtiemiii@gmail.com');cb.textContent='Email copied ✓'}catch(e){cb.textContent='mtiemiii@gmail.com'}};
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+}
+</script>
+</body>
+</html>
