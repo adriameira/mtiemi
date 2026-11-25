@@ -171,6 +171,8 @@ footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;paddin
  .stat:nth-child(odd){padding-right:10px}.stat:nth-child(even){padding-left:12px}
  body{background-attachment:scroll}
 }
+.track span i .ast{display:inline-block;width:.78em;height:.78em;vertical-align:-.02em;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+@media(max-width:900px){.card.feat{gap:14px;align-items:stretch}.card.feat .imgs.one{order:-1;max-width:none;justify-self:stretch}.card.feat .imgs.one img{aspect-ratio:16/10;object-position:center 30%}}
 </style>
 </head>
 <body>
@@ -274,7 +276,7 @@ footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;paddin
 <script>
 {
 const brands=['adidas','WGSN','Highsnobiety','Nike','Zalando','AKQA','Monks','Jellyfish','90 Antiope Magazine','Cartier','Moncler','Google','BMW'];
-const one=brands.map(b=>`<span>${b}<i>✳</i></span>`).join('');
+const one=brands.map(b=>`<span>${b}<i><svg class="ast" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9 4.9 19.1"/></svg></i></span>`).join('');
 document.getElementById('track').innerHTML=one+one;
 
 const projects=[
